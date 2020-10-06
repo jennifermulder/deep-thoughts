@@ -5,6 +5,7 @@ const { gql } = require('apollo-server-express');
 // define a query = type Query {}
 // Reaction type nested in Thought
 //! = data must exist
+// mutation - will return a user object, either user who logged in or signed up
 const typeDefs = gql`
 type User {
   _id: ID
@@ -32,10 +33,24 @@ type Reaction {
 }
 
 type Query {
+  me: User
   users: [User]
   user(username: String!): User
   thoughts(username: String): [Thought]
   thought(_id: ID!): Thought
+}
+
+type Auth {
+  token: ID!
+  user: User
+}
+
+type Mutation {
+  login(email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!): Auth
+  addThought(thoughtText: String!): Thought
+  addReaction(thoughtId: ID!, reactionBody: String!): Thought
+  addFriend(friendId: ID!): User
 }
 `;
 
