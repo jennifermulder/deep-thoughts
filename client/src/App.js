@@ -22,6 +22,16 @@ import Signup from './pages/Signup';
 // react runs on 3000, server runs on 3001
 // everythign in between the server tags has access to the API server through client
 const client = new ApolloClient({
+  // retrieve token from local storage
+  request: operation => {
+    const token = localStorage.getItem('id_token');
+    // headers to include token
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    });
+  },
   uri: '/graphql'
 });
 
