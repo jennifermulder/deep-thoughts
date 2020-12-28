@@ -1,5 +1,7 @@
 # Deep Thoughts
 
+![](client/public/deep-thoughts.jpg)
+
 ## Purpose
 To provide the user with a CMS-style blog site where they can publish articles, blog posts, and thoughts/ opinions
 
@@ -16,6 +18,9 @@ When the user is not logged into the blog, they can see all of the interesting p
 
 ## Testing
 GraphQL
+
+## Website
+https://immense-ravine-15127.herokuapp.com/
 
 ## Usage
 To run program: node server
